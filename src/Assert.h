@@ -5,6 +5,8 @@
 #include "Common.h"
 #include "Util.h"
 
+namespace tdd {
+
 struct AssertionPoint {
 	const std::string file;
 	const std::string func;
@@ -112,21 +114,25 @@ private:
 };
 
 
-
-#define _FFL AssertionPoint{__FILE__,__func__,std::to_string(__LINE__)}
-#define assertTrue(X) if (!(X)) {throw new AssertionTrueException(#X,_FFL);}
-#define assertFalse(X) if (X) {throw new AssertionFalseException(#X,_FFL);}
-#define assertFail(X) throw new AssertionFailException(std::string(X),_FFL);
+#define _FFL tdd::AssertionPoint{__FILE__,__func__,std::to_string(__LINE__)}
+#define assertTrue(X) if (!(X)) {throw new tdd::AssertionTrueException(#X,_FFL);}
+#define assertFalse(X) if (X) {throw new tdd::AssertionFalseException(#X,_FFL);}
+#define assertFail(X) throw new tdd::AssertionFailException(std::string(X),_FFL);
 #define assertEquals(X,Y) {auto __x = (X); auto __y = (Y); if (!(__x == __y)) \
-	throw new AssertionEqualsException<decltype(__x),decltype(__y)>(__x,#X,__y,#Y,_FFL);}
+	throw new tdd::AssertionEqualsException<decltype(__x),decltype(__y)>(__x,#X,__y,#Y,_FFL);}
 #define assertLessThan(X,Y) {auto __x = (X); auto __y = (Y); if (!(__x < __y)) \
-	throw new AssertionLessThanException<decltype(__x),decltype(__y)>(__x,#X,__y,#Y,_FFL);}
+	throw new tdd::AssertionLessThanException<decltype(__x),decltype(__y)>(__x,#X,__y,#Y,_FFL);}
 #define assertGreaterThan(X,Y) {auto __x = (X); auto __y = (Y); if (!(__x > __y)) \
-	throw new AssertionGreaterThanException<decltype(__x),decltype(__y)>(__x,#X,__y,#Y,_FFL);}
+	throw new tdd::AssertionGreaterThanException<decltype(__x),decltype(__y)>(__x,#X,__y,#Y,_FFL);}
 #define assertClose(X,Y) {auto __x = (X); auto __y = (Y); if (!util.almostEqual(__x,__y)) \
-	throw new AssertionCloseException(__x,#X,__y,#Y,_FFL);}
+	throw new tdd::AssertionCloseException(__x,#X,__y,#Y,_FFL);}
 #define assertCloserThan(X,Y,PRECISION) {auto __x = (X); auto __y = (Y); auto __precision = (PRECISION); if (!util.almostEqual(__x,__y,__precision)) \
-	throw new AssertionCloserThanException(__x,#X,__y,#Y,__precision,#PRECISION,_FFL);}
+	throw new tdd::AssertionCloserThanException(__x,#X,__y,#Y,__precision,#PRECISION,_FFL);}
+
+} // namespace tdd
+
+
+
 
 
 #endif

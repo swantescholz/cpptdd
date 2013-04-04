@@ -6,7 +6,7 @@ App::App() {}
 App::~App() {}
 
 void App::run() {
-	println("app run");
+	tdd::println("app run");
 }
 
 

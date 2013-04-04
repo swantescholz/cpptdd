@@ -5,6 +5,8 @@
 
 #include <algorithm>
 
+namespace tdd {
+
 Testing::Testing() {
 	outputWidth = 120;
 	minTestrunResultIndentation = 40;
@@ -135,3 +137,8 @@ void Testing::runTestcase(Testcase testcase, int longestNameLength) {
 	}
 	runTests.push_back(testcase);
 }
+
+
+} // namespace tdd
+
+

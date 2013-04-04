@@ -5,6 +5,8 @@
 
 #include <algorithm>
 
+namespace tdd {
+
 const String String::whitespaceCharacters(" \t\n\r");
 
 String::String(const std::vector<String>& strs, const String& delim) {
@@ -293,6 +295,14 @@ Test(ends with works) {
 	assertTrue(s.endsWith("ert"))
 	assertFalse(s.endsWith("wer"))
 }
+
+
+} // namespace tdd
+
+
+
+
+
 
 
 

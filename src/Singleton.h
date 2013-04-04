@@ -1,6 +1,8 @@
 #ifndef SINGLETON_H_
 #define SINGLETON_H_
 
+namespace tdd {
+
 template <typename T>
 class Singleton {
 protected:
@@ -19,5 +21,10 @@ public:
 };
 
 template<typename T> T* Singleton<T>::instance = nullptr;
+
+} // namespace tdd
+
+
+
 
 #endif

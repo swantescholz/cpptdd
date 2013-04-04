@@ -5,6 +5,8 @@
 #include "Common.h"
 #include "Singleton.h"
 
+namespace tdd {
+
 class Util : public Singleton<Util> {
 public:
 	Util();
@@ -21,5 +23,8 @@ public:
 
 
 };
+
+} // namespace tdd
+
 
 #endif /* UTIL_H_ */

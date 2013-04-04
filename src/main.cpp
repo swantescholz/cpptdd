@@ -15,6 +15,7 @@ Test(hello main) {
 
 
 void test() {
+	testing.setDefaultTestrunResultIndentation(90);
 	testing.runAllTests();
 
 }

@@ -4,6 +4,8 @@
 #include "Common.h"
 #include "Assert.h"
 
+namespace tdd {
+
 typedef std::function<void(void)> func_t;
 
 class Testcase {
@@ -23,5 +25,11 @@ public:
 	Testcase(std::string testcaseName, std::string testcaseFile, std::string linenumber, func_t f)
 	 : name(testcaseName), file(testcaseFile), linenumber(linenumber), func(f) {}
 };
+
+} // namespace tdd
+
+
+
+
 
 #endif /* TESTCASE_H_ */

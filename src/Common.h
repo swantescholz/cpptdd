@@ -8,7 +8,8 @@
 #include <sstream>
 #include <memory>
 #include <functional>
-#include <thread>
+
+namespace tdd {
 
 template<typename T> void print(T v) {std::cout << v;}
 template<typename T> void println(T v) {std::cout << v << std::endl;}
@@ -33,5 +34,9 @@ std::wstring to_wstring(const std::string& str);
 	std::string operator+(T i, std::string s);
 __declstrop(bool) __declstrop(short) __declstrop(int) __declstrop(long long int)
 __declstrop(float) __declstrop(double) __declstrop(std::size_t)
+
+} // namespace tdd
+
+
 
 #endif

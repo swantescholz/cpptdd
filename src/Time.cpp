@@ -1,5 +1,9 @@
 #include "Time.h"
 
+#include <thread>
+
+namespace tdd {
+
 tclock::time_point now() {return tclock::now();}
 void wait(double sec) {std::this_thread::sleep_for(microseconds((int)(sec*1000000.0)));}
 double durationSec(const timepoint& t1, const timepoint& t2) {
@@ -28,3 +32,8 @@ string formatDuration(const timepoint& t1, const timepoint& t2) {
 	str += "."+f(ms,3);
 	return str;
 }
+
+} // namespace tdd
+
+
+

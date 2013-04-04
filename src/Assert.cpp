@@ -1,7 +1,9 @@
 #include "Assert.h"
 #include "Hacks.h"
 #include "tdd.h"
+//#include "ignoreTests.h"
 
+namespace tdd {
 const std::string AssertionException::unknown = "<unknown>";
 
 string AssertionException::constructMsg(string assertion, AssertionPoint point) {
@@ -32,7 +34,7 @@ Test(lessThan assertion works) {
 	assertLessThan(x, y);
 }
 
-Test(lessThan assertion works) {
+Test(greaterThan assertion works) {
 	int x = 5;
 	double y = 7.0;
 	assertGreaterThan(x, 6-2);
@@ -68,3 +70,10 @@ Test(closerThan assertion works) {
 	} catch (...) {}
 	if (!failed) assertFail("an exception should have been thrown here")
 }
+} // namespace tdd
+
+
+
+
+
+

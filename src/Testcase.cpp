@@ -2,6 +2,8 @@
 #include "Hacks.h"
 #include "String.h"
 
+namespace tdd {
+
 string Testcase::getErrorDescription(string indentString) {
 	if (failedAssertion == nullptr) return "";
 	AssertionPoint point = failedAssertion->point;
@@ -24,3 +26,8 @@ string Testcase::getErrorDescription(string indentString) {
 	str += indentString + msg.replaceAll(nl,nl+indentString);
 	return str;
 }
+
+
+} // namespace tdd
+
+

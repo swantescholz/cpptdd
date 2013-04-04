@@ -6,6 +6,8 @@ using namespace std;
 #include "Common.h"
 #include "Macros.h"
 
+namespace tdd {
+
 #define util (Util::getInstance())
 
 struct ScopeExit {
@@ -44,6 +46,12 @@ template <typename T> T lex(const std::string& str) {
 	iss >> var;
 	return var;
 }
+
+
+} // namespace tdd
+
+
+
 
 
 #endif /* HACKS_H_ */

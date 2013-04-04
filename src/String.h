@@ -3,6 +3,7 @@
 
 #include "Common.h"
 
+namespace tdd {
 
 class String : public std::string {
 public:
@@ -36,6 +37,11 @@ public:
 	String breakLines(int maxLength) const;
 	String removeEnding(const String& ending) const;
 };
+
+} // namespace tdd
+
+
+
 
 
 #endif

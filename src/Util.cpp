@@ -3,9 +3,9 @@
 #include "tdd.h"
 #include <cmath>
 
-Util::Util() {
-}
+namespace tdd {
 
+Util::Util() {}
 Util::~Util() {}
 
 bool Util::almostEqual(double a, double b, double epsilon) {
@@ -21,4 +21,10 @@ Test(almost equal works) {
 	assertFalse(util.almostEqual(1.0,1.01));
 	assertTrue(util.almostEqual(1.0,1.01,0.1));
 }
+
+
+} // namespace tdd
+
+
+
 

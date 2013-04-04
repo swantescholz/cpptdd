@@ -4,6 +4,6 @@
 #include "Testing.h"
 #include "Assert.h"
 
-#define testing (Testing::getInstance())
+#define testing (tdd::Testing::getInstance())
 
 #endif /* TDD_H_ */

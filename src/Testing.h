@@ -7,6 +7,8 @@
 #include "Macros.h"
 #include "Testcase.h"
 
+namespace tdd {
+
 class Testing : public Singleton<Testing> {
 public:
 	Testing();
@@ -18,6 +20,8 @@ public:
 	int getTestCount();
 	void printStatistic();
 
+	void setDefaultTestrunResultIndentation(int width) {minTestrunResultIndentation = width;}
+	int getDefaultTestrunResultIndentation() {return minTestrunResultIndentation;}
 private:
 	void runTestcase(Testcase testcase, int longestNameLength);
 	std::string testCountToString(int cound);
@@ -38,11 +42,19 @@ public:
 	}
 };
 
+} // namespace tdd
+
+
+
+
+
+
 #ifndef IGNORE_TESTS
-#define Test(X) \
+#define TestWithQuotedName(X) \
 	static void STRING_JOIN(__testcasefunc,__LINE__)(); \
-	static __Dummy STRING_JOIN(__testcasedummy,__LINE__)(#X,__FILE__,__LINE__,STRING_JOIN(__testcasefunc,__LINE__)); \
+	static tdd::__Dummy STRING_JOIN(__testcasedummy,__LINE__)(X,__FILE__,__LINE__,STRING_JOIN(__testcasefunc,__LINE__)); \
 	static void STRING_JOIN(__testcasefunc,__LINE__)()
+#define Test(X) TestWithQuotedName(#X)
 #endif
 
 #endif
