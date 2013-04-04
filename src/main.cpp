@@ -1,35 +1,25 @@
 
-#include "App.h"
-#include "tdd.h"
-#include "Hacks.h"
+#include "Example.h"
+#include "tdd/tdd.h"
 
-#include <regex>
-#include <iterator>
 
-Test(hello main) {
+//you can put tests in your main.cpp file if you really want to
+Test(one test from main.cpp) {
 	int x = 9;
-	assertEquals(x,9)
-	//assertEquals(x,8)
-	assertEquals(x+1,10)
+	assertEqual(x,9)
 }
 
+// =======================
+// === EXECUTING TESTS ===
 
-void test() {
-	testing.setDefaultTestrunResultIndentation(90);
-	testing.runAllTests();
-
-}
-
-void runApp() {
-	App app;
-	app.run();
-}
-
+//EITHER manually configure how and which tests to run:
 int main(int argc, char **argv) {
-	test();
-	//runApp();
-	
+	testing.setOutputWidth(100); //the length of the seperation lines
+	testing.setDefaultTestrunResultIndentation(40); //controls the maximum number of dots in "... done"
+	testing.runAllTests(); //this will run all testfiles in alphabetical order
 	return 0;
 }
+//OR simply run all tests with this shortcut:
+//RUN_ALL_TESTS_MAIN
 
 
