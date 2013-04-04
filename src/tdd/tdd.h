@@ -6,4 +6,10 @@
 
 #define testing (tdd::Testing::getInstance())
 
+#define RUN_ALL_TESTS_MAIN \
+	int main(int argc, char **argv) { \
+		testing.runAllTests(); \
+		return 0; \
+	}
+
 #endif /* TDD_H_ */

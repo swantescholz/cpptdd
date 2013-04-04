@@ -1,12 +1,12 @@
 #ifndef HACKS_H_
 #define HACKS_H_
 
-using namespace std;
-
 #include "Common.h"
 #include "Macros.h"
 
 namespace tdd {
+
+using namespace std;
 
 #define util (Util::getInstance())
 

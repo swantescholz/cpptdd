@@ -29,7 +29,7 @@ std::string AssertionCloserThanException::constructMsg(double xv, std::string xs
 Test(lessThan assertion works) {
 	int x = 5;
 	double y = 7.0;
-	assertLessThan(x, 4+2);
+	assertLessThan(x,  4+2);
 	assertLessThan(y, 8.0);
 	assertLessThan(x, y);
 }

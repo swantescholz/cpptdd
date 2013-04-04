@@ -1,6 +1,6 @@
 #include "String.h"
 #include "Testing.h"
-//#include "ignoreTests.h"
+#include "ignoreTests.h"
 #include "Hacks.h"
 
 #include <algorithm>
@@ -160,21 +160,21 @@ String String::toUpper() const {
 }
 
 Test(toLower works) {
-	assertEquals(String(".-AbXy").toLower(), ".-abxy");
+	assertEqual(String(".-AbXy").toLower(), ".-abxy");
 }
 Test(toUpper works) {
-	assertEquals(String(".-AbXy").toUpper(), ".-ABXY");
+	assertEqual(String(".-AbXy").toUpper(), ".-ABXY");
 }
 Test(breakLines works) {
 	String s = "aaaaa bbbbb ccccc ddd eee fff ggg";
 	s = s.repeat(2,nl);
 	String broken = s.breakLines(15);
 	auto lines = broken.toLines();
-	assertEquals(static_cast<int>(lines.size()), 4);
-	assertEquals(lines[0], "aaaaa bbbbb ccccc");
-	assertEquals(lines[1], "ddd eee fff ggg");
-	assertEquals(lines[2], lines[0]);
-	assertEquals(lines[3], lines[1]);
+	assertEqual(static_cast<int>(lines.size()), 4);
+	assertEqual(lines[0], "aaaaa bbbbb ccccc");
+	assertEqual(lines[1], "ddd eee fff ggg");
+	assertEqual(lines[2], lines[0]);
+	assertEqual(lines[3], lines[1]);
 }
 
 Test(constants are correct) {
@@ -182,20 +182,20 @@ Test(constants are correct) {
 	assertTrue(String::whitespaceCharacters.contains("\n"));
 	assertTrue(String::whitespaceCharacters.contains("\t"));
 	assertTrue(String::whitespaceCharacters.contains("\r"));
-	assertEquals(String::npos, static_cast<int>(string::npos));
+	assertEqual(String::npos, static_cast<int>(string::npos));
 }
 Test(removeEnding works) {
-	assertEquals(String("hello.txt").removeEnding(".txt"), "hello");
-	assertEquals(String("hello.exe").removeEnding(".txt"), "hello.exe");
+	assertEqual(String("hello.txt").removeEnding(".txt"), "hello");
+	assertEqual(String("hello.exe").removeEnding(".txt"), "hello.exe");
 }
 
 
 Test(trimming whitespace works) {
-	assertEquals(String("  xx    yy  ").trimWhitespace(true,false,false), "xx    yy  ");
-	assertEquals(String("  xx    yy  ").trimWhitespace(false,false,true), "  xx    yy");
-	assertEquals(String("  xx    yy  ").trimWhitespace(false,true,false), "  xx yy  ");
-	assertEquals(String("\r\n \t\n \t xx    yy\n\t\r \t  ").trimWhitespace(true,true,true), "xx yy");
-	assertEquals(String("a\t\nb   c\t\r   de").trimWhitespace(false,true,false), "a b c de");
+	assertEqual(String("  xx    yy  ").trimWhitespace(true,false,false), "xx    yy  ");
+	assertEqual(String("  xx    yy  ").trimWhitespace(false,false,true), "  xx    yy");
+	assertEqual(String("  xx    yy  ").trimWhitespace(false,true,false), "  xx yy  ");
+	assertEqual(String("\r\n \t\n \t xx    yy\n\t\r \t  ").trimWhitespace(true,true,true), "xx yy");
+	assertEqual(String("a\t\nb   c\t\r   de").trimWhitespace(false,true,false), "a b c de");
 }
 
 Test(check whitespace works) {
@@ -205,7 +205,7 @@ Test(check whitespace works) {
 
 Test(length works) {
 	String s("abc wert");
-	assertEquals(s.lengthInCharacters(), 8)
+	assertEqual(s.lengthInCharacters(), 8)
 }
 
 Test(unicode string length behaves as expected) {
@@ -213,19 +213,19 @@ Test(unicode string length behaves as expected) {
 	String germanChars = "äöüÄÖÜß€";
 	String mathChars   = "¬∧∈∀∨∃⇔⇒";
 	int expectedLength = 8;
-	assertEquals(asciiChars.lengthInCharacters(), expectedLength);
-	assertEquals(germanChars.lengthInCharacters(), expectedLength);
-	assertEquals(mathChars.lengthInCharacters(), expectedLength);
+	assertEqual(asciiChars.lengthInCharacters(), expectedLength);
+	assertEqual(germanChars.lengthInCharacters(), expectedLength);
+	assertEqual(mathChars.lengthInCharacters(), expectedLength);
 }
 
 Test(line constructor works) {
 	vector<String> v = {"aa","bb","cc"};
 	String s(v,"xx");
-	assertEquals(s,"aaxxbbxxcc");
+	assertEqual(s,"aaxxbbxxcc");
 	v.clear();
 	try {
 		String s2(v,"xx");
-		assertEquals(s2,"");
+		assertEqual(s2,"");
 	} catch (...) {
 		assertFail("line constructer with empty vector throws exception!")
 	}
@@ -233,43 +233,43 @@ Test(line constructor works) {
 
 Test(repeat works) {
 	String s("ab");
-	assertEquals(s.repeat(3), "ababab");
-	assertEquals(s.repeat(3,"xy"), "abxyabxyab");
+	assertEqual(s.repeat(3), "ababab");
+	assertEqual(s.repeat(3,"xy"), "abxyabxyab");
 }
 
 Test(toLines works) {
 	String s("ab" + nl + "cd" + nl + "ef");
 	auto lines = s.toLines();
-	assertEquals(static_cast<int>(lines.size()), 3);
-	assertEquals(lines[0], "ab");
-	assertEquals(lines[1], "cd");
-	assertEquals(lines[2], "ef");
+	assertEqual(static_cast<int>(lines.size()), 3);
+	assertEqual(lines[0], "ab");
+	assertEqual(lines[1], "cd");
+	assertEqual(lines[2], "ef");
 }
 
 Test(split works) {
 	String s("abxycdxyef");
 	auto parts = s.split("xy");
-	assertEquals(static_cast<int>(parts.size()), 3);
-	assertEquals(parts[0], "ab");
-	assertEquals(parts[1], "cd");
-	assertEquals(parts[2], "ef");
+	assertEqual(static_cast<int>(parts.size()), 3);
+	assertEqual(parts[0], "ab");
+	assertEqual(parts[1], "cd");
+	assertEqual(parts[2], "ef");
 	parts = s.split("xy", 2);
-	assertEquals(static_cast<int>(parts.size()), 2);
-	assertEquals(parts[0], "ab");
-	assertEquals(parts[1], "cd");
+	assertEqual(static_cast<int>(parts.size()), 2);
+	assertEqual(parts[0], "ab");
+	assertEqual(parts[1], "cd");
 }
 
 
 Test(extractTail works) {
-	assertEquals(String("/hello world/blabla/foobar.txt").extractTail("/"), "foobar.txt");
-	assertEquals(String("xxfooxxfooar.txt").extractTail("foo"), "ar.txt");
-	assertEquals(String("aabbcc.txt").extractTail("/"), "aabbcc.txt");
+	assertEqual(String("/hello world/blabla/foobar.txt").extractTail("/"), "foobar.txt");
+	assertEqual(String("xxfooxxfooar.txt").extractTail("foo"), "ar.txt");
+	assertEqual(String("aabbcc.txt").extractTail("/"), "aabbcc.txt");
 }
 
 Test(replaceAll works) {
 	String s("xxbxxcxxdxx");
 	s = s.replaceAll("xx","xax");
-	assertEquals(s,"xaxbxaxcxaxdxax");
+	assertEqual(s,"xaxbxaxcxaxdxax");
 }
 Test(contains works) {
 	String s("abc wert");
@@ -279,8 +279,8 @@ Test(contains works) {
 Test(hello xx   ss string dsf sdf sdkjfh skfjh sdkfjhsd kajfhkjsa dhkdjsfh
 		sdfsdfsdf sdfkjhsd dsf ) {
 	int x = 8;
-	assertEquals(x,8)
-	assertEquals(x+1,9)
+	assertEqual(x,8)
+	assertEqual(x+1,9)
 	assertFalse(x < 7)
 }
 

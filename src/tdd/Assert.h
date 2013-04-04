@@ -14,7 +14,7 @@ struct AssertionPoint {
 };
 
 struct Exception {
-	std::string msg;
+	const std::string msg;
 	Exception(std::string errorMsg) : msg(errorMsg) {}
 	operator std::string() const {return toString();}
 	std::string toString() const {return msg;}
@@ -58,8 +58,8 @@ struct AssertionFailException : AssertionException {
 };
 
 template<typename X, typename Y>
-struct AssertionEqualsException : AssertionException {
-	AssertionEqualsException(X xv, std::string xstr, Y yv, std::string ystr, AssertionPoint point)
+struct AssertionEqualException : AssertionException {
+	AssertionEqualException(X xv, std::string xstr, Y yv, std::string ystr, AssertionPoint point)
 	: AssertionException(constructMsg(xv,xstr,yv,ystr), point) {}
 	virtual std::string getAssertionType() {return "assertEquals";}
 private:
@@ -114,24 +114,24 @@ private:
 };
 
 
-#define _FFL tdd::AssertionPoint{__FILE__,__func__,std::to_string(__LINE__)}
-#define assertTrue(X) if (!(X)) {throw new tdd::AssertionTrueException(#X,_FFL);}
-#define assertFalse(X) if (X) {throw new tdd::AssertionFalseException(#X,_FFL);}
-#define assertFail(X) throw new tdd::AssertionFailException(std::string(X),_FFL);
-#define assertEquals(X,Y) {auto __x = (X); auto __y = (Y); if (!(__x == __y)) \
-	throw new tdd::AssertionEqualsException<decltype(__x),decltype(__y)>(__x,#X,__y,#Y,_FFL);}
-#define assertLessThan(X,Y) {auto __x = (X); auto __y = (Y); if (!(__x < __y)) \
-	throw new tdd::AssertionLessThanException<decltype(__x),decltype(__y)>(__x,#X,__y,#Y,_FFL);}
-#define assertGreaterThan(X,Y) {auto __x = (X); auto __y = (Y); if (!(__x > __y)) \
-	throw new tdd::AssertionGreaterThanException<decltype(__x),decltype(__y)>(__x,#X,__y,#Y,_FFL);}
-#define assertClose(X,Y) {auto __x = (X); auto __y = (Y); if (!util.almostEqual(__x,__y)) \
-	throw new tdd::AssertionCloseException(__x,#X,__y,#Y,_FFL);}
-#define assertCloserThan(X,Y,PRECISION) {auto __x = (X); auto __y = (Y); auto __precision = (PRECISION); if (!util.almostEqual(__x,__y,__precision)) \
-	throw new tdd::AssertionCloserThanException(__x,#X,__y,#Y,__precision,#PRECISION,_FFL);}
+template<typename T> void __mythrow(const T& v) {throw std::shared_ptr<AssertionException>(new T(v));}
 
 } // namespace tdd
 
-
+#define __FFL tdd::AssertionPoint{__FILE__,__func__,std::to_string(__LINE__)}
+#define assertFail(X) tdd::__mythrow(tdd::AssertionFailException(std::string(X),__FFL));
+#define assertTrue(X) if (!(X)) {tdd::__mythrow(tdd::AssertionTrueException(#X,__FFL));}
+#define assertFalse(X) if (X) {tdd::__mythrow(tdd::AssertionFalseException(#X,__FFL));}
+#define assertEqual(X,Y) {auto __x = (X); auto __y = (Y); if (!(__x == __y)) { \
+	tdd::__mythrow(tdd::AssertionEqualException<decltype(__x),decltype(__y)>(__x,#X,__y,#Y,__FFL));}}
+#define assertLessThan(X,Y) {auto __x = (X); auto __y = (Y); if (!(__x < __y)) { \
+	tdd::__mythrow(tdd::AssertionLessThanException<decltype(__x),decltype(__y)>(__x,#X,__y,#Y,__FFL));}}
+#define assertGreaterThan(X,Y) {auto __x = (X); auto __y = (Y); if (!(__x > __y)) { \
+	tdd::__mythrow(tdd::AssertionGreaterThanException<decltype(__x),decltype(__y)>(__x,#X,__y,#Y,__FFL));}}
+#define assertClose(X,Y) {auto __x = (X); auto __y = (Y); if (!tdd::Util::getInstance().almostEqual(__x,__y)) { \
+	tdd::__mythrow(tdd::AssertionCloseException(__x,#X,__y,#Y,__FFL));}}
+#define assertCloserThan(X,Y,PRECISION) {auto __x = (X); auto __y = (Y); auto __precision = (PRECISION); if (!tdd::Util::getInstance().almostEqual(__x,__y,__precision)) { \
+	tdd::__mythrow(tdd::AssertionCloserThanException(__x,#X,__y,#Y,__precision,#PRECISION,__FFL));}}
 
 
 

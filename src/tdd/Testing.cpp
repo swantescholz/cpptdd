@@ -125,8 +125,8 @@ void Testing::runTestcase(Testcase testcase, int longestNameLength) {
 		print(line);
 		testcase.func();
 		failed = false;
-	} catch (AssertionException* ex) {
-		testcase.failedAssertion.reset(ex);
+	} catch (const shared_ptr<AssertionException>& ex) {
+		testcase.failedAssertion = ex;
 	} catch (...) {
 		testcase.failedAssertion.reset(new AssertionUnknownException());
 	}

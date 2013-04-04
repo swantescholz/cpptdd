@@ -1,6 +1,7 @@
 #include "Util.h"
 #include "Hacks.h"
 #include "tdd.h"
+#include "ignoreTests.h"
 #include <cmath>
 
 namespace tdd {
@@ -13,7 +14,7 @@ bool Util::almostEqual(double a, double b, double epsilon) {
 }
 
 Test(min/max works with variadic templates) {
-	assertEquals(util.min(4,3,2,5), 2);
+	assertEqual(util.min(4,3,2,5), 2);
 	assertClose(util.min(4.3,3.3333333,5.9), 10.0/3);
 }
 

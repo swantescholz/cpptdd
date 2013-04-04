@@ -20,6 +20,8 @@ public:
 	int getTestCount();
 	void printStatistic();
 
+	void setOutputWidth(int width) {outputWidth = width;}
+	int getOutputWidth() {return outputWidth;}
 	void setDefaultTestrunResultIndentation(int width) {minTestrunResultIndentation = width;}
 	int getDefaultTestrunResultIndentation() {return minTestrunResultIndentation;}
 private:
@@ -35,26 +37,23 @@ private:
 	bool shortenFilepaths;
 };
 
-class __Dummy {
+class __TestDummy {
 public:
-	__Dummy(std::string testcaseName, std::string fileName, int linenumber, func_t f) {
+	__TestDummy(std::string testcaseName, std::string fileName, int linenumber, func_t f) {
 		Testing::getInstance().addTestcase(Testcase(testcaseName, fileName, std::to_string(linenumber),f));
 	}
+};
+
+class __TestIgnoreDummy {
+public:
+	__TestIgnoreDummy(std::function<void(void)> f) {}
 };
 
 } // namespace tdd
 
 
-
-
-
-
 #ifndef IGNORE_TESTS
-#define TestWithQuotedName(X) \
-	static void STRING_JOIN(__testcasefunc,__LINE__)(); \
-	static tdd::__Dummy STRING_JOIN(__testcasedummy,__LINE__)(X,__FILE__,__LINE__,STRING_JOIN(__testcasefunc,__LINE__)); \
-	static void STRING_JOIN(__testcasefunc,__LINE__)()
-#define Test(X) TestWithQuotedName(#X)
+#include "reactivateTests.h"
 #endif
 
 #endif

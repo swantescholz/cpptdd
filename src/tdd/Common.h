@@ -20,20 +20,19 @@ std::wstring to_wstring(const std::string& str);
 
 #ifdef _WIN32
 	const std::string newline("\r\n");
-#elif defined macintosh // OS 9
-	const std::string newline("\r");
 #else
 	const std::string newline("\n"); // Mac OS X uses \n, Linux too
 #endif
 
 
 
-#define __declstrop(T) \
+#define declstrop(T) \
 	std::string& operator+=(std::string& s, T i); \
 	std::string operator+(std::string s, T i); \
 	std::string operator+(T i, std::string s);
-__declstrop(bool) __declstrop(short) __declstrop(int) __declstrop(long long int)
-__declstrop(float) __declstrop(double) __declstrop(std::size_t)
+declstrop(bool) declstrop(short) declstrop(int) declstrop(long long int)
+declstrop(float) declstrop(double) declstrop(std::size_t)
+#undef declstrop
 
 } // namespace tdd
 

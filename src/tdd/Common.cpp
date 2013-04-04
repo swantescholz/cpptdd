@@ -13,6 +13,7 @@ implop(long long int)
 implop(float)
 implop(double)
 implop(std::size_t)
+#undef implop
 
 std::wstring to_wstring(const std::string& str) {
 	return std::wstring(str.begin(), str.end());
