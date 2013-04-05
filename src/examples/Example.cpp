@@ -1,7 +1,7 @@
 #include "Example.h"
 
-//each Testfile must include the following line:
-#include "tdd/tdd.h"
+//each Testfile must include the following file:
+#include "../tdd/tdd.h"
 
 //you can put Tests directly into you class's cpp-file if you want
 Test(A first short test in Example.cpp) {

@@ -1,7 +1,7 @@
 #include "Example.h"
 #include <memory>
 
-#include "tdd/tdd.h"
+#include "../tdd/tdd.h"
 
 //It's best to put the complex tests into a seperate file called
 //<your-class-name>Test.cpp e.g. ExampleTest.cpp
@@ -12,7 +12,7 @@ Test(The first test in a file will be executed first) {
 }
 
 //To exclude a range of Tests in a file, simply add:
-#include "tdd/ignoreTests.h"
+#include "../tdd/ignoreTests.h"
 Test(This second Test would fail if executed) {
 	assertFail("This would normally fail")
 }
@@ -21,7 +21,7 @@ Test(This third Test will also be excludes from execution) {
 }
 
 //To activate following Tests, add:
-#include "tdd/reactivateTests.h"
+#include "../tdd/reactivateTests.h"
 Test(The fourth test here will be executed correctly again) {
 	//asserts are optional, but a test makes little sense without them
 }
