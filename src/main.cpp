@@ -15,7 +15,7 @@ Test(one test from main.cpp) {
 //EITHER manually configure how and which tests to run:
 int main(int argc, char **argv) {
 	testing.setOutputWidth(100); //the length of the seperation lines
-	testing.setDefaultTestrunResultIndentation(40); //controls the maximum number of dots in "... done"
+	testing.setDefaultTestrunResultIndentation(50); //controls the maximum number of dots in "... done"
 	testing.runAllTests(); //this will run all testfiles in alphabetical order
 	return 0;
 }
