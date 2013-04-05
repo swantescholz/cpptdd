@@ -2,7 +2,7 @@ EXEC=application
 SRC=$(wildcard src/*.cpp src/*/*.cpp src/*/*.cpp src/*/*/*.cpp src/*/*/*/*.cpp)
 OBJ=$(SRC:.cpp=.o)
 INC=
-LIBS=-lgmp -lpthread
+LIBS=
 
 CC=g++
 CCOPTS=-std=c++11 -c -Wall -pthread
