@@ -20,7 +20,7 @@ public:
 
 	operator std::string() const {return toString();}
 	std::string toString() const {return file + ": '" + name + "'";}
-	std::string toShortString() const {return "'" + name + "'";}
+	std::string toShortString() const {return "" + name + "";}
 
 	Testcase(std::string testcaseName, std::string testcaseFile, std::string linenumber, func_t f)
 	 : name(testcaseName), file(testcaseFile), linenumber(linenumber), func(f) {}

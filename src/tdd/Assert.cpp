@@ -1,7 +1,7 @@
 #include "Assert.h"
 #include "Hacks.h"
 #include "tdd.h"
-//#include "ignoreTests.h"
+#include "ignoreTests.h"
 
 namespace tdd {
 const std::string AssertionException::unknown = "<unknown>";
@@ -22,10 +22,20 @@ std::string AssertionCloseException::constructMsg(double xv, std::string xstr, d
 
 std::string AssertionCloserThanException::constructMsg(double xv, std::string xstr, double yv, std::string ystr, double prec, std::string precstr) {
 	std::string str = xstr + " not-close-to " + ystr + newline;
-	str += std::string("since [") + xv + "] not-close-to [" + yv + "]";
+	str += std::string("since [") + xv + "] not-close-to [" + yv + "]" + newline;
+	str += std::string("( with comparison-precision '") + precstr + "' = " + prec + " )";
 	return str;
 }
 
+Test(true/false assertions work) {
+	assertTrue(true);
+	assertFalse(false);
+}
+Test(equal/unequal assertions work) {
+	int five = 5;
+	assertEqual(five,5);
+	assertUnequal(five,9);
+}
 Test(lessThan assertion works) {
 	int x = 5;
 	double y = 7.0;

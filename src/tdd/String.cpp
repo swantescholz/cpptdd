@@ -209,13 +209,15 @@ Test(length works) {
 }
 
 Test(unicode string length behaves as expected) {
-	String asciiChars  = "abcdefgh";
-	String germanChars = "äöüÄÖÜß€";
-	String mathChars   = "¬∧∈∀∨∃⇔⇒";
+	String asciiChars   = "abcdefgh";
+	String germanChars  = "äöüÄÖÜß€";
+	String mathChars    = "¬∧∈∀∨∃⇔⇒";
+	String chineseChars = "世界你好世界你好";
 	int expectedLength = 8;
 	assertEqual(asciiChars.lengthInCharacters(), expectedLength);
 	assertEqual(germanChars.lengthInCharacters(), expectedLength);
 	assertEqual(mathChars.lengthInCharacters(), expectedLength);
+	assertEqual(chineseChars.lengthInCharacters(), expectedLength);
 }
 
 Test(line constructor works) {

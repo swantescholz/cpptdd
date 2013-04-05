@@ -115,9 +115,9 @@ string Testing::testCountToString(int count) {
 void Testing::runTestcase(Testcase testcase, int longestNameLength) {
 	bool failed = true;
 	try {
-		string line = indentString + testcase.toShortString() + " ";
-		int numDots = 3;// + longestNameLength - testcase.name.length();
-		numDots = util.max(numDots, minTestrunResultIndentation - line.length());
+		String line = indentString + testcase.toShortString() + " ";
+		int numDots = 3; // + longestNameLength - testcase.name.length();
+		numDots = util.max(numDots, minTestrunResultIndentation - line.lengthInCharacters());
 		forito(numDots) {
 			line += ".";
 		}
