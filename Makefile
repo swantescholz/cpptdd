@@ -1,5 +1,5 @@
-EXEC=run
-SRC=$(wildcard *.cpp */*.cpp)
+EXEC=application
+SRC=$(wildcard src/*.cpp src/*/*.cpp src/*/*.cpp src/*/*/*.cpp src/*/*/*/*.cpp)
 OBJ=$(SRC:.cpp=.o)
 INC=
 LIBS=-lgmp -lpthread
