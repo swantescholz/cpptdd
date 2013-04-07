@@ -2,32 +2,25 @@ cpptdd
 =======
 A Simple Test Driven Development Toolkit for C++11
 -------
+###Features
 
-Hi **this is bold**
+- Leightweight library for Unit-Testing C++ programs
+- Macro ```Test``` for automatic registration of testcases
+- Predefined assertion macros like ```assertEquals``` for comfortable testing
 
-But *this is italic*
-
-###Links
-Hi [cool link to google](http://google.com) yeah
-
-###Some Code
-```c++
+###Usage
+```
 int main() {
   double d = 43.3;
   return "hello world"
 }
 ```
 
-###Lists
+###License
+**None**
 
-A normal list:
-- a
-- b
-- c
-- d
+###Links
+Hi [cool link to google](http://google.com) yeah
 
-a numbered list
 
-1. hi
-6. world
-3. lll
+
