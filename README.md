@@ -15,7 +15,7 @@ A Simple Test Driven Development Toolkit for C++11
 //you can put tests in your main.cpp file if you want to
 Test(one test from main.cpp) {
 	int x = 9;
-	assertEqual(x, 9)
+	assertEqual(x, 8);
 }
 
 int main(int argc, char **argv) {
