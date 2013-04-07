@@ -17,6 +17,8 @@ $(EXEC): $(OBJ)
 
 clean:
 	rm $(EXEC) $(OBJ)
+run:
+	./application
 
 
 #Special symbols used:
