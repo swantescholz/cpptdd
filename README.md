@@ -8,6 +8,11 @@ A Simple Test Driven Development Toolkit for C++11
 - Macro ```Test``` for automatic registration of testcases
 - Predefined assertion macros like ```assertEquals``` for comfortable testing
 
+###Requirements
+This library uses some of the neat features of the new C++ standard **C++11**.
+To compile the sources you will need an appropiate compiler.
+Version 4.7 of g++ should suffice. 
+
 ###Usage
 ```c++
 #include "tdd/tdd.h"
@@ -22,6 +27,14 @@ int main(int argc, char **argv) {
 	testing.runAllTests();
 	return 0;
 }
+```
+
+###Running the Tests
+To run the tests, simply compile your program and execute it.
+You may want to use the included **Makefile**, like:
+```
+make
+make run
 ```
 
 ###Output
