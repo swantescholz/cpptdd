@@ -79,6 +79,7 @@ Ran (15/15) tests, 1 test failed.
 See [Examples](src/examples)
 
 ###License
+**Very** permissive.
 See [UNLICENSE.txt](UNLICENSE.txt)
 
 
