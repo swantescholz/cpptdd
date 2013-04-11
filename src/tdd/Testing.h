@@ -1,5 +1,5 @@
-#ifndef TESTING_H_
-#define TESTING_H_
+#ifndef TDD_TESTING_H_
+#define TDD_TESTING_H_
 
 #include "Singleton.h"
 #include "Assert.h"

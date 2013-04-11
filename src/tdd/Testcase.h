@@ -1,5 +1,5 @@
-#ifndef TESTCASE_H_
-#define TESTCASE_H_
+#ifndef TDD_TESTCASE_H_
+#define TDD_TESTCASE_H_
 
 #include "Common.h"
 #include "Assert.h"

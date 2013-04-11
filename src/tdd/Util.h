@@ -1,6 +1,6 @@
 
-#ifndef UTIL_H_
-#define UTIL_H_
+#ifndef TDD_UTIL_H_
+#define TDD_UTIL_H_
 
 #include "Common.h"
 #include "Singleton.h"

@@ -1,5 +1,5 @@
-#ifndef STRING_H_
-#define STRING_H_
+#ifndef TDD_STRING_H_
+#define TDD_STRING_H_
 
 #include "Common.h"
 

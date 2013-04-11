@@ -1,5 +1,5 @@
-#ifndef TIME_H_
-#define TIME_H_
+#ifndef TDD_TIME_H_
+#define TDD_TIME_H_
 
 #include "Common.h"
 #include "Hacks.h"

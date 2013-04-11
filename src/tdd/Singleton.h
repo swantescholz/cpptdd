@@ -1,5 +1,5 @@
-#ifndef SINGLETON_H_
-#define SINGLETON_H_
+#ifndef TDD_SINGLETON_H_
+#define TDD_SINGLETON_H_
 
 namespace tdd {
 

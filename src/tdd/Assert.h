@@ -1,6 +1,6 @@
 
-#ifndef ASSERT_H_
-#define ASSERT_H_
+#ifndef TDD_ASSERT_H_
+#define TDD_ASSERT_H_
 
 #include "Common.h"
 #include "Util.h"

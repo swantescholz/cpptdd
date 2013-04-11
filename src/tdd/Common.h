@@ -1,5 +1,5 @@
-#ifndef COMMON_H_
-#define COMMON_H_
+#ifndef TDD_COMMON_H_
+#define TDD_COMMON_H_
 
 #include <vector>
 #include <map>
