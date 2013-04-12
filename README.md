@@ -6,7 +6,7 @@ A Simple Test Driven Development Toolkit for C++11
 
 - Leightweight library for Unit-Testing C++ programs
 - Macro ```Test``` for automatic registration of testcases
-- Predefined assertion macros like ```assertEquals``` for comfortable testing
+- Predefined assertion macros like ```assertEqual``` for comfortable testing
 
 ###Requirements
 This library uses some of the neat features of the new C++ standard **C++11**.
@@ -28,6 +28,21 @@ int main(int argc, char **argv) {
 	return 0;
 }
 ```
+
+###Assert Macros
+Following assert macros are available in the tests:
+```c++
+assertFail("Unable to open file 'example.txt'");
+assertTrue( 5 < 9 );
+assertFalse( 11 < 9 );
+assertEqual( 3, 3 );
+assertUnequal( 5, 7 );
+assertLessThan( 3.2, 5.9 );
+assertGreaterThan( 8.3, 5.9 );
+assertClose( 3.14159265, 3.1415926535897 );
+assertCloserThan( 3.1, 3.1415926535897, 0.1 );
+```
+Do **not** use the C-Macro ```assert``` from ```assert.h```!
 
 ###Running the Tests
 To run the tests, simply compile your program and execute it.
