@@ -2,18 +2,18 @@ cpptdd
 =======
 A Simple Test Driven Development Toolkit for C++11
 -------
-###Features
+## Features
 
 - Leightweight library for Unit-Testing C++ programs
 - Macro ```Test``` for automatic registration of testcases
 - Predefined assertion macros like ```assertEqual``` for comfortable testing
 
-###Requirements
+### Requirements
 This library uses some of the neat features of the new C++ standard **C++11**.
 To compile the sources you will need an appropiate compiler.
 Version 4.7 of g++ should suffice. 
 
-###Usage
+### Usage
 ```c++
 #include "tdd/tdd.h"
 
@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
 }
 ```
 
-###Assert Macros
+### Assert Macros
 Following assert macros are available in the tests:
 ```c++
 assertFail("Unable to open file 'example.txt'");
@@ -44,7 +44,7 @@ assertCloserThan( 3.1, 3.1415926535897, 0.1 );
 ```
 Do **not** use the C-Macro ```assert``` from ```assert.h```!
 
-###Running the Tests
+### Running the Tests
 To run the tests, simply compile your program and execute it.
 You may want to use the included **Makefile**, like:
 ```
@@ -52,7 +52,7 @@ make
 make run
 ```
 
-###Output
+### Output
 The output of **cpptdd** looks like this:
 ```
 ============================================================
@@ -90,10 +90,10 @@ Ran (15/15) tests, 1 test failed.
 >>> RED <<<
 ```
 
-###Examples
+### Examples
 See [Examples](src/examples)
 
-###License
+### License
 **Very** permissive.
 See [UNLICENSE.txt](UNLICENSE.txt)
 
